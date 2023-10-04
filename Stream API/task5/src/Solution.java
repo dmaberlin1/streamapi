@@ -27,7 +27,12 @@ public class Solution {
     }
 
     private static Long allReadingTasks(List<List<Task>> tasks) {
-        return null;
-        // Ваш код здесь
+        String tag="books";
+        return tasks.stream()
+                .flatMap(Collection::stream)
+//        Collection::stream - это ссылка на метод, используемая для преобразования объекта типа Collection в поток элементов этой коллекции.
+//        flatMap объединяет все эти потоки элементов в один большой поток.
+                .filter(task -> task.getTags().contains(tag))
+                .count();
     }
 }
